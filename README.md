@@ -30,11 +30,7 @@ TODO
 The plugin creates a new object called *cordova.plugins.fileOpener2*, but the object is
 available when the *deviceready* event is handled.
 
-We don't provide a *file_opener* variable in this plugin (as said in the official
-documentation on js_of_ocaml). If we did, *file_opener* will be set to **undefined**
-because the *file_opener* object doesn't exist when we create the variable.
-
-Instead, we provide a function *File_opener.t* of type *unit -> File_opener.file_opener* which creates the
+We provide a function *File_opener.t* of type *unit -> File_opener.file_opener* which creates the
 binding to the *cordova.plugins.fileOpener2* js object. You must call it when the deviceready
 event is handled, eg
 
