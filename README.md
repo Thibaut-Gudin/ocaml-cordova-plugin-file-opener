@@ -1,5 +1,7 @@
 # ocaml-cordova-plugin-file-opener
 
+* gen_js_api (master branch): [![Build Status](https://travis-ci.org/dannywillems/ocaml-cordova-plugin-file-opener.svg?branch=master)](https://travis-ci.org/dannywillems/ocaml-cordova-plugin-file-opener)
+
 Binding to
 [cordova-plugin-file-opener](https://github.com/apache/cordova-plugin-file-opener)
 
