@@ -1,5 +1,5 @@
 ################################################################################
-MLI_FILE		= file_opener.mli
+MLI_FILE		= cordova_file_opener.mli
 ## Name which will be used in -package with ocamlfind
 LIB_NAME		= cordova-plugin-file-opener
 ################################################################################
