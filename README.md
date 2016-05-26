@@ -49,22 +49,3 @@ cordova plugin add cordova-plugin-file-opener2
 ## How to use ?
 
 See the official documentation: [cordova-plugin-file-opener](https://github.com/apache/cordova-plugin-file-opener2)
-
-## ! BE CAREFUL !
-
-The plugin creates a new object called *cordova.plugins.fileOpener2*, but the object is
-available when the *deviceready* event is handled.
-
-We provide a function *Cordova_file_opener.t* of type *unit -> Cordova_file_opener.file_opener* which creates the
-binding to the *cordova.plugins.fileOpener2* js object. You must call it when the deviceready
-event is handled, eg
-
-```OCaml
-let on_device_ready _ =
-  let file_opener = Cordova_file_opener.t () in
-  (* Some code *)
-
-let _ =
-  Dom.addEventListener Dom_html.document (Dom.Event.make "deviceready")
-  (Dom_html.handler on_device_ready) Js._false
-```
