@@ -1,37 +1,17 @@
 (* -------------------------------------------------------------------------- *)
-class error : Ojs.t ->
-  object
-    inherit Ojs.obj
+type error = private Ojs.t
+val error_status  : error -> int
+[@@js.get "status"]
+val error_message : error -> string
+[@@js.get "message"]
 
-    method status     : int
-    method message    : string
-  end
-
-class result : Ojs.t ->
-  object
-    inherit Ojs.obj
-    method status     : int
-  end
+type result = private Ojs.t
+val result_status : result -> int
+[@@js.get "status"]
 (* -------------------------------------------------------------------------- *)
 
 (* -------------------------------------------------------------------------- *)
-class callback : Ojs.t ->
-  object
-    inherit Ojs.obj
-
-    method error    : error -> unit
-    method success  : unit -> unit
-  end
-(* -------------------------------------------------------------------------- *)
-
-(* -------------------------------------------------------------------------- *)
-class callback_installed : Ojs.t ->
-  object
-    inherit Ojs.obj
-
-    method success  : result -> unit
-    method error    : unit -> unit
-  end
+type callback_installed = private Ojs.t
 
 val create_callback_installed :
   ?success:(result -> unit) ->
@@ -41,41 +21,38 @@ val create_callback_installed :
 (* -------------------------------------------------------------------------- *)
 
 (* -------------------------------------------------------------------------- *)
+type callback = private Ojs.t
+
 val create_callback :
   ?error:(error -> unit)  ->
   ?success:(unit -> unit) ->
   unit                    ->
   callback
-  [@@js.builder]
+[@@js.builder]
 (* -------------------------------------------------------------------------- *)
 
 (* -------------------------------------------------------------------------- *)
-class file_opener : Ojs.t ->
-  object
-    inherit Ojs.obj
-    method open_file :  string                                          ->
-                        string                                          ->
-                        ?cb:(callback [@js.default create_callback ()]) ->
-                        unit                                            ->
-                        unit
+val open_file :
+  string                                                              ->
+  string                                                              ->
+  ?cb:(callback [@js.default create_callback ()])                     ->
+  unit                                                                ->
+  unit
+[@@js.global "cordova.plugins.fileOpener2.openFile"]
 
-    (* Only available on Android *)
-    method uninstall :  string                                          ->
-                        ?cb:(callback [@js.default create_callback ()]) ->
-                        unit                                            ->
-                        unit
+(* Only available on Android *)
+val uninstall :
+  string                                                              ->
+  ?cb:(callback [@js.default create_callback ()])                     ->
+  unit                                                                ->
+  unit
+[@@js.global "cordova.plugins.fileOpener2.uninstall"]
 
-    (* Only available on Android *)
-    method app_is_installed : string                                ->
-                              ?cb:(callback_installed [@js.default
-                              create_callback_installed ()])        ->
-                              unit                                  ->
-                              unit
-  end
+(* Only available on Android *)
+val app_is_installed :
+  string                                                              ->
+  ?cb:(callback_installed [@js.default create_callback_installed ()]) ->
+  unit                                                                ->
+  unit
+[@@js.global "cordova.plugins.fileOpener2.appIsInstalled"]
 (* -------------------------------------------------------------------------- *)
-
-(* -------------------------------------------------------------------------- *)
-val t : unit -> file_opener
-[@@js.get "cordova.plugins.fileOpener2"]
-(* -------------------------------------------------------------------------- *)
-
