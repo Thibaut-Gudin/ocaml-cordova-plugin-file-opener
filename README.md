@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/dannywillems/ocaml-cordova-plugin-file-opener.svg?branch=master)](https://travis-ci.org/dannywillems/ocaml-cordova-plugin-file-opener)
 
 Binding to
-[cordova-plugin-file-opener](https://github.com/apache/cordova-plugin-file-opener2)
+[cordova-plugin-file-opener](https://github.com/pwlin/cordova-plugin-file-opener2)
 
 [Example
 application](https://github.com/dannywillems/ocaml-cordova-plugin-file-opener-example).
@@ -16,7 +16,7 @@ This plugin defines a global navigator.file-opener object, which provides an API
 taking pictures and for choosing images from the system's image library.
 ```
 
-Source: [cordova-plugin-file-opener](https://github.com/apache/cordova-plugin-file-opener)
+Source: [cordova-plugin-file-opener](https://github.com/pwlin/cordova-plugin-file-opener2)
 
 ## Repository branches and tags
 
@@ -48,4 +48,4 @@ cordova plugin add cordova-plugin-file-opener2
 
 ## How to use ?
 
-See the official documentation: [cordova-plugin-file-opener](https://github.com/apache/cordova-plugin-file-opener2)
+See the official documentation: [cordova-plugin-file-opener](https://github.com/pwlin/cordova-plugin-file-opener2)
