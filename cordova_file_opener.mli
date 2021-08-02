@@ -56,3 +56,7 @@ val app_is_installed :
   unit
 [@@js.global "cordova.plugins.fileOpener2.appIsInstalled"]
 (* -------------------------------------------------------------------------- *)
+
+val open_ :
+  file_name:string -> content_type:string -> callback -> unit
+[@@js.global "cordova.plugins.fileOpener2.open"]
